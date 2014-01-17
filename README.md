@@ -1,4 +1,4 @@
-# Apiary Blueprint AST Convertor
+# Apiary Blueprint AST Convertor [![Build Status](https://travis-ci.org/apiaryio/apiary_blueprint_convertor.png?branch=master)](https://travis-ci.org/apiaryio/apiary_blueprint_convertor)
 
 A migration tool for legacy [Apiary Blueprint](https://github.com/apiaryio/blueprint-parser) AST into [API Blueprint](http://apiblueprint.org) AST. Converts Apiary Blueprint AST serialized into a JSON file to [API Blueprint AST](https://github.com/apiaryio/snowcrash/wiki/API-Blueprint-AST-Media-Types) JSON representation (`vnd.apiblueprint.ast.raw+json; version=1.0`).
 
@@ -21,6 +21,8 @@ Or install it yourself as:
 ```sh
 $ apiary_blueprint_convertor path/to/legacy/ast.json
 ```
+
+See the [convert feature](features/convert.feature) for details or run `apiary_blueprint_convertor --help`.
 
 ### Convert Legacy Apiary Blueprint to API Blueprint
 
