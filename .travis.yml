@@ -1,0 +1,14 @@
+language: ruby
+rvm:
+  - 1.9.3
+  - 2.1.0
+before_install: gem update bundler
+notifications:
+  email:
+    recipients:
+      - z@apiary.io  
+    on_success: change
+    on_failure: always
+  hipchat:
+    secure: "JT63QEBAHHbcM9MiLheYGfpztUCnzwcDuOXmn9A96J9DqMvinOlEhLW2sl0aGr9YsF8mXY9zB03KglpSeP9yLZyroAPjIqNGh2+eLFy+v/ELpDBW4EA1XwBNwz1CvHSReJWupujTSHiV9r4+WPPIb0+KIsqPsOvbh1sGPMhulkA="
+    

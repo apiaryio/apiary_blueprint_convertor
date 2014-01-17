@@ -1,0 +1,3 @@
+#!/usr/bin/env ruby
+require 'apiary_blueprint_convertor/cli'
+ApiaryBlueprintConvertor::CLI.start
