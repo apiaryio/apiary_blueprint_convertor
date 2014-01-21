@@ -1,5 +1,6 @@
 require 'optparse'
 require 'apiary_blueprint_convertor/version'
+require 'apiary_blueprint_convertor/convertor.rb'
 
 module ApiaryBlueprintConvertor
   
@@ -14,12 +15,12 @@ module ApiaryBlueprintConvertor
     end
 
     def runCommand(args, options)
-      command = :compose if args.first.nil? || @command.nil?
+      command = :convert if args.first.nil? || @command.nil?
       command = @command if @command
 
       case command
       when :convert
-        # TODO:
+        Convertor.convert(args.first)
       when :version
         puts ApiaryBlueprintConvertor::VERSION
       else
