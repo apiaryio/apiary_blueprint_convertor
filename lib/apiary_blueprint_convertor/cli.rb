@@ -1,6 +1,6 @@
 require 'optparse'
 require 'apiary_blueprint_convertor/version'
-require 'apiary_blueprint_convertor/convertor.rb'
+require 'apiary_blueprint_convertor/convertor'
 
 module ApiaryBlueprintConvertor
   
