@@ -112,6 +112,167 @@ Feature: Convert AST
 
     Given a file named "apiblueprint_ast.json" with:
     """
+    {
+      "_version": "1.0",
+      "metadata": {
+        "HOST": {
+          "value": "http://www.google.com/"
+        }
+      },
+      "name": "Sample API v2",
+      "description": "Welcome to our sample API documentation. All comments can be written in (support [Markdown](http://daringfireball.net/projects/markdown/syntax) syntax)\n\n",
+      "resourceGroups": [
+        {
+          "name": "Shopping Cart Resources",
+          "description": "The following is a section of resources related to the shopping cart\n\n",
+          "resources": [
+            {
+              "name": "",
+              "description": "",
+              "uriTemplate": "/shopping-cart",
+              "model": {},
+              "parameters": {},
+              "headers": {},
+              "actions": [
+                {
+                  "name": "",
+                  "description": "List products added into your shopping-cart. (comment block again in Markdown)\n\n",
+                  "method": "GET",
+                  "parameters": {},
+                  "headers": {},
+                  "examples": [
+                    {
+                      "name": "",
+                      "description": "",
+                      "requests": [],
+                      "responses": [
+                        {
+                          "name": "200",
+                          "description": "",
+                          "headers": {
+                            "Content-Type": {
+                              "value": "application/json"
+                            }
+                          },
+                          "body": "{\n    \"items\": [\n        {\n            \"url\": \"/shopping-cart/1\",\n            \"product\": \"2ZY48XPZ\",\n            \"quantity\": 1,\n            \"name\": \"New socks\",\n            \"price\": 1.25\n        }\n    ]\n}\n",
+                          "schema": ""
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "",
+                  "description": "Save new products in your shopping cart\n\n",
+                  "method": "POST",
+                  "parameters": {},
+                  "headers": {},
+                  "examples": [
+                    {
+                      "name": "",
+                      "description": "",
+                      "requests": [
+                        {
+                          "name": "",
+                          "description": "",
+                          "headers": {
+                            "Content-Type": {
+                              "value": "application/json"
+                            }
+                          },
+                          "body": "{\n    \"product\": \"1AB23ORM\",\n    \"quantity\": 2\n}\n",
+                          "schema": ""
+                        }
+                      ],
+                      "responses": [
+                        {
+                          "name": "201",
+                          "description": "",
+                          "headers": {
+                            "Content-Type": {
+                              "value": "application/json"
+                            }
+                          },
+                          "body": "{\n    \"status\": \"created\",\n    \"url\": \"/shopping-cart/2\"\n}\n",
+                          "schema": ""
+                        },
+                        {
+                          "name": "401",
+                          "description": "",
+                          "headers": {
+                            "Content-Type": {
+                              "value": "application/json; charset=utf-8"
+                            }
+                          },
+                          "body": "{\n    \"message\": \"You have not provided proper request token\"\n}\n",
+                          "schema": ""
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Payment Resources",
+          "description": "This resource allows you to submit payment information to process your *shopping cart* items\n\n",
+          "resources": [
+            {
+              "name": "",
+              "description": "",
+              "uriTemplate": "/payment",
+              "model": {},
+              "parameters": {},
+              "headers": {},
+              "actions": [
+                {
+                  "name": "",
+                  "description": "",
+                  "method": "POST",
+                  "parameters": {},
+                  "headers": {},
+                  "examples": [
+                    {
+                      "name": "",
+                      "description": "",
+                      "requests": [
+                        {
+                          "name": "",
+                          "description": "",
+                          "headers": {},
+                          "body": "{\n    \"cc\": \"12345678900\",\n    \"cvc\": \"123\",\n    \"expiry\": \"0112\"\n}\n",
+                          "schema": ""
+                        }
+                      ],
+                      "responses": [
+                        {
+                          "name": "200",
+                          "description": "",
+                          "headers": {},
+                          "body": "{\n    \"receipt\": \"/payment/receipt/1\"\n}\n",
+                          "schema": ""
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "",
+              "description": "### POST (application/json)\n\n+ Request \n\n    + Body\n\n            {\n                \"a\": \"b\",\n                \"c\": \"0\"\n            }\n\n    + Schema\n\n            {\n                \"type\": \"object\",\n                \"properties\": {\n                    \"a\": {\n                        \"type\": \"string\",\n                        \"format\": \"alphanumeric\"\n                    },\n                    \"c\": {\n                        \"type\": \"integer\"\n                    }\n                }\n            }\n\n+ Response 200\n\n    + Body\n\n        {\n            \"status\": \"ok\"\n        }\n\n    + Schema\n\n        {\n            \"type\": \"object\",\n            \"properties\": {\n                \"status\": {\n                    \"type\": \"string\",\n                    \"format\": \"alphanumeric\"\n                }\n            }\n        }\n",
+              "uriTemplate": "/resource",
+              "model": {},
+              "parameters": {},
+              "headers": {},
+              "actions": []
+            }
+          ]
+        }
+      ]
+    }    
     """
 
   Scenario: Convert Legacy Apiary Blueprint AST into API Blueprint AST

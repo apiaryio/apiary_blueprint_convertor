@@ -83,7 +83,5 @@ module ApiaryBlueprintConvertor
     def self.convert_sections(sections, blueprint_ast)
       return
     end
-
-
   end
 end
