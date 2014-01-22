@@ -29,6 +29,12 @@ Use this convertor together with the legacy [Apiary Blueprint Parser](https://gi
 2. Convert legacy JSON AST into API Blueprint JSON AST using `apiary_blueprint_convertor`
 3. Compose API Blueprint from API Blueprint JSON AST using `matter_compiler`
 
+For example: 
+
+```sh
+$ blueprint-parser legacy_blueprint.apib | apiary_blueprint_convertor | matter_compiler --format json > new_blueprint.md
+```
+
 ## Contributing
 1. Fork this repository (http://github.com/apiaryio/apiary_blueprint_convertor/fork)
 2. Create your feature branch (`git checkout -b my-new-feature`)
