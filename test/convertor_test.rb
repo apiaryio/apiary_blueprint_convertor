@@ -1,7 +1,7 @@
 require 'minitest/autorun'
 require 'apiary_blueprint_convertor/convertor'
 
-class ConvertorTest < Minitest::Unit::TestCase
+class ConvertorTest < Minitest::Test
   include ApiaryBlueprintConvertor
 
   VALIDATIONS_AST = [{

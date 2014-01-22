@@ -107,7 +107,7 @@ Feature: Convert AST
           "body": "{\n    \"request\": {\n        \"type\": \"object\",\n        \"properties\": {\n            \"a\": {\n                \"type\": \"string\",\n                \"format\": \"alphanumeric\"\n            },\n            \"c\": {\n                \"type\": \"integer\"\n            }\n        }\n    },\n    \"response\": {\n        \"type\": \"object\",\n        \"properties\": {\n            \"status\": {\n                \"type\": \"string\",\n                \"format\": \"alphanumeric\"\n            }\n        }\n    }\n}"
         }
       ]
-    }    
+    }
     """
 
     Given a file named "apiblueprint_ast.json" with:
@@ -120,92 +120,92 @@ Feature: Convert AST
         }
       },
       "name": "Sample API v2",
-      "description": "Welcome to our sample API documentation. All comments can be written in (support [Markdown](http://daringfireball.net/projects/markdown/syntax) syntax)\n\n",
+      "description": "Welcome to our sample API documentation. All comments can be written in (support [Markdown](http://daringfireball.net/projects/markdown/syntax) syntax)",
       "resourceGroups": [
         {
           "name": "Shopping Cart Resources",
-          "description": "The following is a section of resources related to the shopping cart\n\n",
+          "description": "The following is a section of resources related to the shopping cart",
           "resources": [
             {
-              "name": "",
-              "description": "",
+              "name": null,
+              "description": null,
               "uriTemplate": "/shopping-cart",
-              "model": {},
-              "parameters": {},
-              "headers": {},
+              "model": null,
+              "parameters": null,
+              "headers": null,
               "actions": [
                 {
-                  "name": "",
-                  "description": "List products added into your shopping-cart. (comment block again in Markdown)\n\n",
+                  "name": null,
+                  "description": "List products added into your shopping-cart. (comment block again in Markdown)",
                   "method": "GET",
-                  "parameters": {},
-                  "headers": {},
+                  "parameters": null,
+                  "headers": null,
                   "examples": [
                     {
-                      "name": "",
-                      "description": "",
-                      "requests": [],
+                      "name": null,
+                      "description": null,
+                      "requests": null,
                       "responses": [
                         {
                           "name": "200",
-                          "description": "",
+                          "description": null,
                           "headers": {
                             "Content-Type": {
                               "value": "application/json"
                             }
                           },
-                          "body": "{\n    \"items\": [\n        {\n            \"url\": \"/shopping-cart/1\",\n            \"product\": \"2ZY48XPZ\",\n            \"quantity\": 1,\n            \"name\": \"New socks\",\n            \"price\": 1.25\n        }\n    ]\n}\n",
-                          "schema": ""
+                          "body": "{\n    \"items\": [\n        {\n            \"url\": \"/shopping-cart/1\",\n            \"product\": \"2ZY48XPZ\",\n            \"quantity\": 1,\n            \"name\": \"New socks\",\n            \"price\": 1.25\n        }\n    ]\n}",
+                          "schema": null
                         }
                       ]
                     }
                   ]
                 },
                 {
-                  "name": "",
-                  "description": "Save new products in your shopping cart\n\n",
+                  "name": null,
+                  "description": "Save new products in your shopping cart",
                   "method": "POST",
-                  "parameters": {},
-                  "headers": {},
+                  "parameters": null,
+                  "headers": null,
                   "examples": [
                     {
-                      "name": "",
-                      "description": "",
+                      "name": null,
+                      "description": null,
                       "requests": [
                         {
-                          "name": "",
-                          "description": "",
+                          "name": null,
+                          "description": null,
                           "headers": {
                             "Content-Type": {
                               "value": "application/json"
                             }
                           },
-                          "body": "{\n    \"product\": \"1AB23ORM\",\n    \"quantity\": 2\n}\n",
-                          "schema": ""
+                          "body": "{\n    \"product\": \"1AB23ORM\",\n    \"quantity\": 2\n}",
+                          "schema": null
                         }
                       ],
                       "responses": [
                         {
                           "name": "201",
-                          "description": "",
+                          "description": null,
                           "headers": {
                             "Content-Type": {
                               "value": "application/json"
                             }
                           },
-                          "body": "{\n    \"status\": \"created\",\n    \"url\": \"/shopping-cart/2\"\n}\n",
-                          "schema": ""
+                          "body": "{\n    \"status\": \"created\",\n    \"url\": \"/shopping-cart/2\"\n}",
+                          "schema": null
                         },
                         {
                           "name": "401",
-                          "description": "",
+                          "description": null,
                           "headers": {
                             "Content-Type": {
                               "value": "application/json; charset=utf-8"
                             }
                           },
-                          "body": "{\n    \"message\": \"You have not provided proper request token\"\n}\n",
-                          "schema": ""
+                          "body": "{\n    \"message\": \"You have not provided proper request token\"\n}",
+                          "schema": null
                         }
                       ]
                     }
@@ -217,42 +217,42 @@ Feature: Convert AST
         },
         {
           "name": "Payment Resources",
-          "description": "This resource allows you to submit payment information to process your *shopping cart* items\n\n",
+          "description": null,
           "resources": [
             {
-              "name": "",
-              "description": "",
+              "name": null,
+              "description": null,
               "uriTemplate": "/payment",
-              "model": {},
-              "parameters": {},
-              "headers": {},
+              "model": null,
+              "parameters": null,
+              "headers": null,
               "actions": [
                 {
-                  "name": "",
-                  "description": "",
+                  "name": null,
+                  "description": "This resource allows you to submit payment information to process your *shopping cart* items",
                   "method": "POST",
-                  "parameters": {},
-                  "headers": {},
+                  "parameters": null,
+                  "headers": null,
                   "examples": [
                     {
-                      "name": "",
-                      "description": "",
+                      "name": null,
+                      "description": null,
                       "requests": [
                         {
-                          "name": "",
-                          "description": "",
-                          "headers": {},
-                          "body": "{\n    \"cc\": \"12345678900\",\n    \"cvc\": \"123\",\n    \"expiry\": \"0112\"\n}\n",
-                          "schema": ""
+                          "name": null,
+                          "description": null,
+                          "headers": null,
+                          "body": "{\n    \"cc\": \"12345678900\",\n    \"cvc\": \"123\",\n    \"expiry\": \"0112\"\n}",
+                          "schema": null
                         }
                       ],
                       "responses": [
                         {
                           "name": "200",
-                          "description": "",
-                          "headers": {},
-                          "body": "{\n    \"receipt\": \"/payment/receipt/1\"\n}\n",
-                          "schema": ""
+                          "description": null,
+                          "headers": null,
+                          "body": "{\n    \"receipt\": \"/payment/receipt/1\"\n}",
+                          "schema": null
                         }
                       ]
                     }
@@ -261,18 +261,54 @@ Feature: Convert AST
               ]
             },
             {
-              "name": "",
-              "description": "### POST (application/json)\n\n+ Request \n\n    + Body\n\n            {\n                \"a\": \"b\",\n                \"c\": \"0\"\n            }\n\n    + Schema\n\n            {\n                \"type\": \"object\",\n                \"properties\": {\n                    \"a\": {\n                        \"type\": \"string\",\n                        \"format\": \"alphanumeric\"\n                    },\n                    \"c\": {\n                        \"type\": \"integer\"\n                    }\n                }\n            }\n\n+ Response 200\n\n    + Body\n\n        {\n            \"status\": \"ok\"\n        }\n\n    + Schema\n\n        {\n            \"type\": \"object\",\n            \"properties\": {\n                \"status\": {\n                    \"type\": \"string\",\n                    \"format\": \"alphanumeric\"\n                }\n            }\n        }\n",
+              "name": null,
+              "description": null,
               "uriTemplate": "/resource",
-              "model": {},
-              "parameters": {},
-              "headers": {},
-              "actions": []
+              "model": null,
+              "parameters": null,
+              "headers": null,
+              "actions": [
+                {
+                  "name": null,
+                  "description": null,
+                  "method": "POST",
+                  "parameters": null,
+                  "headers": null,
+                  "examples": [
+                    {
+                      "name": null,
+                      "description": null,
+                      "requests": [
+                        {
+                          "name": null,
+                          "description": null,
+                          "headers": {
+                            "Content-Type": {
+                              "value": "application/json"
+                            }
+                          },
+                          "body": "{\n    \"a\": \"b\",\n    \"c\": \"0\"\n}",
+                          "schema": "{\"type\":\"object\",\"properties\":{\"a\":{\"type\":\"string\",\"format\":\"alphanumeric\"},\"c\":{\"type\":\"integer\"}}}"
+                        }
+                      ],
+                      "responses": [
+                        {
+                          "name": "200",
+                          "description": null,
+                          "headers": null,
+                          "body": "{\n    \"status\": \"ok\"\n}",
+                          "schema": "{\"type\":\"object\",\"properties\":{\"status\":{\"type\":\"string\",\"format\":\"alphanumeric\"}}}"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
       ]
-    }    
+    }
     """
 
   Scenario: Convert Legacy Apiary Blueprint AST into API Blueprint AST

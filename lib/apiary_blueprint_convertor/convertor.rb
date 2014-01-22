@@ -195,11 +195,13 @@ module ApiaryBlueprintConvertor
       schema = resource_schema(legacy_resource, legacy_validations)
 
       # Convert Request
-      if legacy_resource[:request]
+      if legacy_resource[:request] && 
+          !(legacy_resource[:request][:headers].blank? && legacy_resource[:request][:body].blank?)
+
         request = {
           :name => nil,
           :description => nil,
-          :headers => create_headers_hash(legacy_resource[:headers]),
+          :headers => create_headers_hash(legacy_resource[:request][:headers]),
           :body => legacy_resource[:request][:body],
           :schema => (schema) ? schema[:request] : nil
         }
@@ -231,7 +233,7 @@ module ApiaryBlueprintConvertor
     # Create an API Blueprint header hash
     # from legacy headers hash
     def self.create_headers_hash(legacy_headers)
-      return nil if legacy_headers.nil?
+      return nil if legacy_headers.blank?
       headers = {}
 
       legacy_headers.each do |key, value|
