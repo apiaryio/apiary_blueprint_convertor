@@ -10,7 +10,7 @@ GIT
 PATH
   remote: .
   specs:
-    apiary_blueprint_convertor (0.0.1)
+    apiary_blueprint_convertor (0.2.0)
 
 GEM
   remote: https://rubygems.org/
