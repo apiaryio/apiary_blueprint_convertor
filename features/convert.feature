@@ -113,12 +113,13 @@ Feature: Convert AST
     Given a file named "apiblueprint_ast.json" with:
     """
     {
-      "_version": "1.0",
-      "metadata": {
-        "HOST": {
+      "_version": "2.0",
+      "metadata": [
+        {
+          "name": "HOST",
           "value": "http://www.google.com/"
         }
-      },
+      ],
       "name": "Sample API v2",
       "description": "Welcome to our sample API documentation. All comments can be written in (support [Markdown](http://daringfireball.net/projects/markdown/syntax) syntax)",
       "resourceGroups": [
@@ -132,14 +133,12 @@ Feature: Convert AST
               "uriTemplate": "/shopping-cart",
               "model": null,
               "parameters": null,
-              "headers": null,
               "actions": [
                 {
                   "name": null,
                   "description": "List products added into your shopping-cart. (comment block again in Markdown)",
                   "method": "GET",
                   "parameters": null,
-                  "headers": null,
                   "examples": [
                     {
                       "name": null,
@@ -149,11 +148,12 @@ Feature: Convert AST
                         {
                           "name": "200",
                           "description": null,
-                          "headers": {
-                            "Content-Type": {
+                          "headers": [
+                            {
+                              "name": "Content-Type",
                               "value": "application/json"
                             }
-                          },
+                          ],
                           "body": "{\n    \"items\": [\n        {\n            \"url\": \"/shopping-cart/1\",\n            \"product\": \"2ZY48XPZ\",\n            \"quantity\": 1,\n            \"name\": \"New socks\",\n            \"price\": 1.25\n        }\n    ]\n}",
                           "schema": null
                         }
@@ -166,7 +166,6 @@ Feature: Convert AST
                   "description": "Save new products in your shopping cart",
                   "method": "POST",
                   "parameters": null,
-                  "headers": null,
                   "examples": [
                     {
                       "name": null,
@@ -175,11 +174,12 @@ Feature: Convert AST
                         {
                           "name": null,
                           "description": null,
-                          "headers": {
-                            "Content-Type": {
+                          "headers": [
+                            {
+                              "name": "Content-Type",
                               "value": "application/json"
                             }
-                          },
+                          ],
                           "body": "{\n    \"product\": \"1AB23ORM\",\n    \"quantity\": 2\n}",
                           "schema": null
                         }
@@ -188,22 +188,24 @@ Feature: Convert AST
                         {
                           "name": "201",
                           "description": null,
-                          "headers": {
-                            "Content-Type": {
+                          "headers": [
+                            {
+                              "name": "Content-Type",
                               "value": "application/json"
                             }
-                          },
+                          ],
                           "body": "{\n    \"status\": \"created\",\n    \"url\": \"/shopping-cart/2\"\n}",
                           "schema": null
                         },
                         {
                           "name": "401",
                           "description": null,
-                          "headers": {
-                            "Content-Type": {
+                          "headers": [
+                            {
+                              "name": "Content-Type",
                               "value": "application/json; charset=utf-8"
                             }
-                          },
+                          ],
                           "body": "{\n    \"message\": \"You have not provided proper request token\"\n}",
                           "schema": null
                         }
@@ -225,14 +227,12 @@ Feature: Convert AST
               "uriTemplate": "/payment",
               "model": null,
               "parameters": null,
-              "headers": null,
               "actions": [
                 {
                   "name": null,
                   "description": "This resource allows you to submit payment information to process your *shopping cart* items",
                   "method": "POST",
                   "parameters": null,
-                  "headers": null,
                   "examples": [
                     {
                       "name": null,
@@ -266,14 +266,12 @@ Feature: Convert AST
               "uriTemplate": "/resource",
               "model": null,
               "parameters": null,
-              "headers": null,
               "actions": [
                 {
                   "name": null,
                   "description": null,
                   "method": "POST",
                   "parameters": null,
-                  "headers": null,
                   "examples": [
                     {
                       "name": null,
@@ -282,11 +280,12 @@ Feature: Convert AST
                         {
                           "name": null,
                           "description": null,
-                          "headers": {
-                            "Content-Type": {
+                          "headers": [
+                            {
+                              "name": "Content-Type",
                               "value": "application/json"
                             }
-                          },
+                          ],
                           "body": "{\n    \"a\": \"b\",\n    \"c\": \"0\"\n}",
                           "schema": "{\"type\":\"object\",\"properties\":{\"a\":{\"type\":\"string\",\"format\":\"alphanumeric\"},\"c\":{\"type\":\"integer\"}}}"
                         }
