@@ -5,7 +5,7 @@ module ApiaryBlueprintConvertor
   
   class Convertor
 
-    API_BLUEPRONT_AST_VERSION = "1.0"
+    API_BLUEPRINT_AST_VERSION = "2.0"
 
     def self.read_file(file)
       unless File.readable?(file)
@@ -33,7 +33,7 @@ module ApiaryBlueprintConvertor
       
       # Top level API Blueprint Template
       blueprint_ast = {
-        :_version => API_BLUEPRONT_AST_VERSION,
+        :_version => API_BLUEPRINT_AST_VERSION,
         :metadata => nil,
         :name => nil,
         :description => nil,
@@ -77,11 +77,12 @@ module ApiaryBlueprintConvertor
         return
       end
 
-      blueprint_ast[:metadata] = {
-        :HOST => {
+      blueprint_ast[:metadata] = [
+        {
+          :name => "HOST",
           :value => "#{legacy_location}"
         }
-      }
+      ]
     end
 
     # Convert array of blueprint sections
@@ -125,7 +126,6 @@ module ApiaryBlueprintConvertor
             :uriTemplate => legacy_resource[:url],
             :model => nil,
             :parameters => nil,
-            :headers => nil,
             :actions => nil
           }
           
@@ -162,7 +162,6 @@ module ApiaryBlueprintConvertor
         :description => legacy_resource[:description],
         :method => legacy_resource[:method],
         :parameters => nil,
-        :headers => nil,
         :examples => nil
       }
 
@@ -234,12 +233,15 @@ module ApiaryBlueprintConvertor
     # from legacy headers hash
     def self.create_headers_hash(legacy_headers)
       return nil if legacy_headers.blank?
-      headers = {}
+      headers = []
 
       legacy_headers.each do |key, value|
-        headers[key] = {
-          :value => value
+        header = {
+          :name => key.to_s,
+          :value => value.to_s
         }
+
+        headers << header
       end
 
       headers

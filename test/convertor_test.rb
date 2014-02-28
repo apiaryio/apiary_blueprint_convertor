@@ -88,13 +88,9 @@ class ConvertorTest < Minitest::Test
     assert_equal 1, blueprint_ast.keys.length
     assert_equal :metadata, blueprint_ast.keys.first
 
-    assert_equal 1, blueprint_ast[:metadata].keys.length
-    assert_equal :HOST, blueprint_ast[:metadata].keys.first
-
-    assert_equal 1, blueprint_ast[:metadata][:HOST].keys.length
-    assert_equal :value, blueprint_ast[:metadata][:HOST].keys.first
-
-    assert_equal "http://google.com", blueprint_ast[:metadata][:HOST][:value]
+    assert_equal 1, blueprint_ast[:metadata].length
+    assert_equal "HOST", blueprint_ast[:metadata][0][:name]
+    assert_equal "http://google.com", blueprint_ast[:metadata][0][:value]
   end
 
   def test_convert_blueprint
@@ -104,6 +100,7 @@ class ConvertorTest < Minitest::Test
     assert_equal 4, blueprint_ast.keys.length
 
     assert blueprint_ast[:metadata]
+    assert_equal 1, blueprint_ast[:metadata].length
     assert_equal "API NAME", blueprint_ast[:name]
     assert_equal "Lorem Ipsum", blueprint_ast[:description]
     assert blueprint_ast[:resourceGroups]
@@ -145,7 +142,6 @@ class ConvertorTest < Minitest::Test
     assert_equal "/resource1", group_ast[:resources][0][:uriTemplate]
     assert_equal nil, group_ast[:resources][0][:model]
     assert_equal nil, group_ast[:resources][0][:parameters]
-    assert_equal nil, group_ast[:resources][0][:headers]
     assert group_ast[:resources][0][:actions]
     assert_equal 2, group_ast[:resources][0][:actions].length
 
@@ -154,7 +150,6 @@ class ConvertorTest < Minitest::Test
     assert_equal "/resource2", group_ast[:resources][1][:uriTemplate]
     assert_equal nil, group_ast[:resources][1][:model]
     assert_equal nil, group_ast[:resources][1][:parameters]
-    assert_equal nil, group_ast[:resources][1][:headers]
     assert group_ast[:resources][1][:actions]
     assert_equal 1, group_ast[:resources][1][:actions].length
   end
@@ -168,7 +163,6 @@ class ConvertorTest < Minitest::Test
     assert_equal "GET", resource_ast[:actions][0][:method]
     assert_equal "Ipsum Lorem", resource_ast[:actions][0][:description]
     assert_equal nil, resource_ast[:actions][0][:parameters]
-    assert_equal nil, resource_ast[:actions][0][:headers]
     assert_instance_of Array, resource_ast[:actions][0][:examples]
   end
 
@@ -195,34 +189,23 @@ class ConvertorTest < Minitest::Test
     assert_equal "200", action_ast[:examples][0][:responses][0][:name]
     assert_equal nil, action_ast[:examples][0][:responses][0][:description]
     
-    assert_instance_of Hash, action_ast[:examples][0][:responses][0][:headers]
-    assert_equal 1, action_ast[:examples][0][:responses][0][:headers].keys.length
-    assert_equal :'Content-Type', action_ast[:examples][0][:responses][0][:headers].keys[0]
-    assert_instance_of Hash, action_ast[:examples][0][:responses][0][:headers][:'Content-Type']
-    assert_equal 1, action_ast[:examples][0][:responses][0][:headers][:'Content-Type'].keys.length
-    assert_equal :value, action_ast[:examples][0][:responses][0][:headers][:'Content-Type'].keys[0]
-    assert_equal "text/plain", action_ast[:examples][0][:responses][0][:headers][:'Content-Type'][:value]
-
+    assert_instance_of Array, action_ast[:examples][0][:responses][0][:headers]
+    assert_equal 1, action_ast[:examples][0][:responses][0][:headers].length
+    assert_equal "Content-Type", action_ast[:examples][0][:responses][0][:headers][0][:name]
+    assert_equal "text/plain", action_ast[:examples][0][:responses][0][:headers][0][:value]
     assert_equal "Hello World!", action_ast[:examples][0][:responses][0][:body]
     assert_equal "0xdeadbeef", action_ast[:examples][0][:responses][0][:schema]
 
     assert_equal "404", action_ast[:examples][0][:responses][1][:name]
     assert_equal nil, action_ast[:examples][0][:responses][1][:description]
 
-    assert_instance_of Hash, action_ast[:examples][0][:responses][1][:headers]
-    assert_equal 2, action_ast[:examples][0][:responses][1][:headers].keys.length
+    assert_instance_of Array, action_ast[:examples][0][:responses][1][:headers]
+    assert_equal 2, action_ast[:examples][0][:responses][1][:headers].length
     
-    assert_equal :'Content-Type', action_ast[:examples][0][:responses][1][:headers].keys[0]
-    assert_instance_of Hash, action_ast[:examples][0][:responses][1][:headers][:'Content-Type']
-    assert_equal 1, action_ast[:examples][0][:responses][1][:headers][:'Content-Type'].keys.length
-    assert_equal :value, action_ast[:examples][0][:responses][1][:headers][:'Content-Type'].keys[0]
-    assert_equal "application/json", action_ast[:examples][0][:responses][1][:headers][:'Content-Type'][:value]
-
-    assert_equal :'X-Header', action_ast[:examples][0][:responses][1][:headers].keys[1]
-    assert_instance_of Hash, action_ast[:examples][0][:responses][1][:headers][:'X-Header']
-    assert_equal 1, action_ast[:examples][0][:responses][1][:headers][:'X-Header'].keys.length
-    assert_equal :value, action_ast[:examples][0][:responses][1][:headers][:'X-Header'].keys[0]
-    assert_equal "42", action_ast[:examples][0][:responses][1][:headers][:'X-Header'][:value]
+    assert_equal "Content-Type", action_ast[:examples][0][:responses][1][:headers][0][:name]
+    assert_equal "application/json", action_ast[:examples][0][:responses][1][:headers][0][:value]
+    assert_equal "X-Header", action_ast[:examples][0][:responses][1][:headers][1][:name]
+    assert_equal "42", action_ast[:examples][0][:responses][1][:headers][1][:value]
 
     assert_equal "42 not found.", action_ast[:examples][0][:responses][1][:body]
     assert_equal "0xdeadbeef", action_ast[:examples][0][:responses][1][:schema]
