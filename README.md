@@ -1,4 +1,4 @@
-![logo](https://raw.github.com/apiaryio/api-blueprint/gh-pages/assets/logo_apiblueprint.png) 
+![logo](https://raw.github.com/apiaryio/api-blueprint/master/assets/logo_apiblueprint.png)
 
 # Apiary Blueprint AST Convertor [![Build Status](https://travis-ci.org/apiaryio/apiary_blueprint_convertor.png?branch=master)](https://travis-ci.org/apiaryio/apiary_blueprint_convertor)
 A migration tool for legacy [Apiary Blueprint](https://github.com/apiaryio/blueprint-parser) AST into [API Blueprint](http://apiblueprint.org) AST. Converts Apiary Blueprint AST serialized into a JSON file to [API Blueprint AST](https://github.com/apiaryio/api-blueprint-ast) JSON representation (`vnd.apiblueprint.ast.raw+json; version=2.0`).
